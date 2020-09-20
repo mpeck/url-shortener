@@ -1,0 +1,36 @@
+#+TITLE: URL Shortener
+
+* Modules
+- ShortenerWeb (Phoenix)
+- ShortURL (module)
+- Persist (Mnesia?)
+
+* API
+** GET /
+*** Response
+200 -> HTML
+** POST /
+*** Request
+- {"url":"<url to shorten>"}
+*** Response
+- 201 -> {
+  "url":"<original url>",
+  "short_url":"<shortened url>"
+  }
+- 400 -> {
+  "url":"<original url>",
+  "reason":"error message"
+  }
+** GET /<key>
+*** Response
+- 302 -> Redirect
+- 404 -> Not Found
+
+* Internal API
+** Types
+*** key :: binary()
+** Functions
+*** ShortURL.create/1
+@spec create(binary()) :: key
+*** ShortURL.get/1
+@spec get(key) :: binary()
