@@ -28,9 +28,11 @@
 
 * Internal API
 ** Types
-*** key :: binary()
+*** ShortURL.key :: binary()
 ** Functions
 *** ShortURL.create/1
-@spec create(binary()) :: key
+@spec create(binary()) :: {:ok, {key, binary()}} | {:error, {atom(), binary()}}
+*** ShortURL.persist/2
+@spec persist({key, binary()}, ShortURL.Perstistance)
 *** ShortURL.get/1
 @spec get(key) :: binary()
