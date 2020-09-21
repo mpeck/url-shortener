@@ -31,6 +31,7 @@ defmodule DB do
 
     # Create the table
     Memento.Table.create(@table, disc_copies: nodes)
+    :ok
   end
 
   @doc """

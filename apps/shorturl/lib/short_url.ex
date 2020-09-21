@@ -23,10 +23,12 @@ defmodule ShortURL do
       {:ok, {"557pzgbz", "https://www.google.com"}}
 
   """
-  @spec create(binary() | %URI{}) :: {:ok, {binary(), binary()}} | {:error, {:bad_scheme, binary()}}
+  @spec create(binary() | %URI{}) ::
+          {:ok, {binary(), binary()}} | {:error, {:bad_scheme, binary()}}
   def create(uri) when is_binary(uri) do
     URI.parse(uri) |> create()
   end
+
   def create(%URI{scheme: scheme} = uri) when scheme in @allowed_schemes do
     uri_string = URI.to_string(uri)
 
@@ -36,6 +38,7 @@ defmodule ShortURL do
 
     {:ok, {key, uri_string}}
   end
+
   def create(bad_uri) do
     {:error, {:bad_scheme, URI.to_string(bad_uri)}}
   end
@@ -46,10 +49,11 @@ defmodule ShortURL do
   ## Examples
 
       iex> ShortURL.persist({"557pzgbz", "https://www.google.com"}, %{})
-      {:ok, {"557pzgbz", "https://www.google.com"}}
+      {:ok, %{"557pzgbz" => "https://www.google.com"}}
 
   """
-  @spec persist({binary(), binary()}, Store.t()) :: {:ok, Store.t()} | {:error, {atom(), binary()}}
+  @spec persist({binary(), binary()}, Store.t()) ::
+          {:ok, Store.t()} | {:error, {atom(), binary()}}
   def persist({key, value}, store \\ %{}) do
     Store.persist(store, key, value)
   end
@@ -59,10 +63,10 @@ defmodule ShortURL do
 
   ## Examples
 
-      iex> ShortURL.get("557pzgbz", %{"557pzgbz" => "https://www.google.com"})
+      iex> ShortURL.fetch("557pzgbz", %{"557pzgbz" => "https://www.google.com"})
       {:ok, "https://www.google.com"}
 
-      iex> ShortURL.get("557pzgbz", %{})
+      iex> ShortURL.fetch("557pzgbz", %{})
       {:error, :not_found}
   """
   @spec fetch(binary(), Store.t()) :: {:ok, binary()} | {:error, atom()}

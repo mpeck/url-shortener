@@ -1,0 +1,11 @@
+<section>
+    <%= form_for :shortener, Routes.page_path(@conn, :create), fn f -> %>
+        <%= label(f, "Enter a URL to shorten") %>
+        <div class="row">
+            <%= textarea(f, :url, [placeholder: "https://www.google.com"]) %>
+        </div>
+        <div>
+            <%= submit("Shorten") %>
+        </div>
+    <% end %>
+</section>

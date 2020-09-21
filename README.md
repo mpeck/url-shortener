@@ -1,4 +1,12 @@
-# STORD URL Shortener Exercise
+# URL Shortener
+A simple URL shortener in elixir.
+
+## Installation
+This project was built with elixir 1.10.4 and erlang/OTP 23.0.4.
+
+For instructions on installing elixir see [elixir-lang.org](https://elixir-lang.org/install.html)
+
+
 The goal of this exercise is to create a URL shortener web application in the same vein as [bitly](https://bitly.com/), [TinyURL](https://tinyurl.com/), or the now defunct [Google URL Shortener](https://goo.gl/). It is intentionally open-ended and you are welcome to implement your solution using the language and tech stack of your choice, but the core functionality of the application should be expressed through your own original code. This is your opportunity to show off your design and development strengths to our engineering team.
 
 ## Application Requirements
