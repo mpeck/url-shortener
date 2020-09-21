@@ -8,7 +8,8 @@ end
 
 defimpl Store, for: Map do
   def persist(map, key, value) do
-    {:ok, Map.put(map, key, value)}
+    Map.put(map, key, value)
+    {:ok, {key, value}}
   end
 
   def get(map, key) do

@@ -46,7 +46,7 @@ defmodule ShortURL do
   ## Examples
 
       iex> ShortURL.persist({"557pzgbz", "https://www.google.com"}, %{})
-      {:ok, %{"557pzgbz" => "https://www.google.com"}}
+      {:ok, {"557pzgbz", "https://www.google.com"}}
 
   """
   @spec persist({binary(), binary()}, Store.t()) :: {:ok, Store.t()} | {:error, {atom(), binary()}}
@@ -65,6 +65,7 @@ defmodule ShortURL do
       iex> ShortURL.get("557pzgbz", %{})
       {:error, :not_found}
   """
+  @spec get(binary(), Store.t()) :: {:ok, binary()} | {:error, atom()}
   def get(key, store) do
     Store.get(store, key)
   end
