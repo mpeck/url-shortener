@@ -65,8 +65,8 @@ defmodule ShortURL do
       iex> ShortURL.get("557pzgbz", %{})
       {:error, :not_found}
   """
-  @spec get(binary(), Store.t()) :: {:ok, binary()} | {:error, atom()}
-  def get(key, store) do
-    Store.get(store, key)
+  @spec fetch(binary(), Store.t()) :: {:ok, binary()} | {:error, atom()}
+  def fetch(key, store) do
+    Store.fetch(store, key)
   end
 end

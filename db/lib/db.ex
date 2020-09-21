@@ -30,7 +30,7 @@ defmodule DB do
     Memento.Table.delete(@table)
 
     # Create the table
-    Memento.Table.create!(@table, disc_copies: nodes)
+    Memento.Table.create(@table, disc_copies: nodes)
   end
 
   @doc """
