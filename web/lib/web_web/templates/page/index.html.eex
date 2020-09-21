@@ -1,0 +1,6 @@
+<section class="row">
+    <%= form_for :shortener, Routes.page_path(@conn, :create), fn f -> %>
+        <%= text_input f, :url %>
+        <%= submit "Shorten" %>
+    <% end %>
+</section>
