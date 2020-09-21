@@ -1,8 +1,8 @@
 
 .PHONY: setup
 setup:
-	mix db.setup
 	mix deps.get
+	mix db.setup
 
 .PHONY: test
 test:
